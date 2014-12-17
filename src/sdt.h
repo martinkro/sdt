@@ -32,7 +32,8 @@ namespace tsssdk
     public:
         sdt()
         {
-            this->assign(0);    
+            T val = 0;
+            this->assign(val);
         }
 
         sdt(const T& val)
@@ -1055,6 +1056,10 @@ namespace tsssdk
             {
                 m_key = (gen_random() + t) % 256;
             }
+            else
+            {
+                m_key = t;
+            }
             return m_key;
         }
 
@@ -1064,6 +1069,10 @@ namespace tsssdk
             if (t == m_idx)
             {
                 m_idx = (gen_random() + t) % SDT_BACKUP_LEN;
+            }
+            else
+            {
+                m_idx = t;
             }
 
             return m_idx;
