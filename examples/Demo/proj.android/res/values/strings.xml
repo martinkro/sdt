@@ -2,4 +2,18 @@
 <resources>
     <string name="app_name">Demo</string>
     <string name="main_title_text">game demo for sdt</string>
+    <string name="main_player_a">未保护的PlayerA数据</string>
+    <string name="main_player_b">受保护的PlayerB数据</string>
+    
+    <string name="main_btn_a2b">A 攻击 B</string>
+    <string name="main_btn_b2a">B 攻击 A</string>
+    <string name="refresh">刷新</string>
+    
+    <string name="main_text_hp">HP(100):</string>
+    <string name="main_text_mp">MP(100):</string>
+    <string name="main_text_attack">攻击力(100):</string>
+    <string name="main_text_defense">防御(100):</string>
+    
+    <string name="main_add_hp_a">增加A的HP</string>
+    <string name="main_add_hp_b">增加B的HP</string>
 </resources>
