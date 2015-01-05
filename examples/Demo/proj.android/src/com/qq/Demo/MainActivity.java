@@ -103,7 +103,7 @@ public class MainActivity extends Activity
     
     private void attack(int flag)
     {
-    	NativeInterface.AddHP(flag);
+    	NativeInterface.Attack(flag);
     	refresh();
     }
     

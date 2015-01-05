@@ -26,7 +26,7 @@ public:
     void subHP(int deltaHP)
     {
         m_hp -= deltaHP;
-        if (m_hp <= 0) m_hp += m_defense * 0.1;
+        if (m_hp <= 0) m_hp = m_defense * 0.1;
     }
 
     void addMP(float deltaMP)
@@ -89,7 +89,7 @@ public:
     void subHP(int deltaHP)
     {
         m_hp -= deltaHP;
-        if (m_hp <= 0) m_hp += m_defense * 0.1;
+        if (m_hp <= 0) m_hp = m_defense * 0.1;
     }
 
     void addMP(float deltaMP)
