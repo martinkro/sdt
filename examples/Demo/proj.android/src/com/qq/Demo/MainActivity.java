@@ -35,6 +35,7 @@ public class MainActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        NativeInterface.GameInit();
         initUI();
     }
     
@@ -59,7 +60,16 @@ public class MainActivity extends Activity
     	mProgressBarPlayerBMP = (ProgressBar)findViewById(R.id.main_b_mp);
     	mProgressBarPlayerBAttack = (ProgressBar)findViewById(R.id.main_b_attack);
     	mProgressBarPlayerBDefense = (ProgressBar)findViewById(R.id.main_b_defense);
+    	
+    	findViewById(R.id.main_refresh).setOnClickListener(this);
+    	findViewById(R.id.main_btn_add_a).setOnClickListener(this);
+    	findViewById(R.id.main_btn_add_b).setOnClickListener(this);
+    	findViewById(R.id.main_btn_a2b).setOnClickListener(this);
+    	findViewById(R.id.main_btn_b2a).setOnClickListener(this);
+    	
+    	refresh();
     }
+    
     
     public void onClick(View v)
     {
@@ -87,35 +97,51 @@ public class MainActivity extends Activity
     
     private void addHP(int flag)
     {
-    	if (flag == 0)
-    	{
-    		int maxHP = mProgressBarPlayerAHP.getMax();
-    		int curHP = mProgressBarPlayerAHP.getProgress();
-    		curHP += 10;
-    		if (curHP > maxHP) curHP = maxHP;
-    		mPlayerAHP.setText("HP():");
-    		mProgressBarPlayerAHP.setProgress(curHP);
-    	}
-    	else
-    	{
-    		
-    	}
+    	NativeInterface.AddHP(flag);
+    	refresh();
     }
     
     private void attack(int flag)
     {
-    	if (flag == 0)
-    	{
-    		
-    	}
-    	else
-    	{
-    		
-    	}
+    	NativeInterface.AddHP(flag);
+    	refresh();
     }
     
     private void refresh()
     {
+    	int aHP = NativeInterface.GetHP(0);
+    	float aMP = NativeInterface.GetMP(0);
+    	int aAttack = NativeInterface.GetAttack(0);
+    	long aDefense = NativeInterface.GetDefense(0);
     	
+		mPlayerAHP.setText(String.format("HP(%d):",aHP));
+		mProgressBarPlayerAHP.setProgress(aHP);
+		
+		mPlayerAMP.setText(String.format("MP(%d):",(int)aMP));
+		mProgressBarPlayerAMP.setProgress((int)aMP);
+		
+		mPlayerAAttack.setText(String.format("攻击力(%d):",aAttack));
+		mProgressBarPlayerAAttack.setProgress(aAttack);
+		
+		mPlayerADefense.setText(String.format("防御(%d):",(int)aDefense));
+		mProgressBarPlayerADefense.setProgress((int)aDefense);
+    	
+    	
+    	int bHP = NativeInterface.GetHP(1);
+    	float bMP = NativeInterface.GetMP(1);
+    	int bAttack = NativeInterface.GetAttack(1);
+    	long bDefense = NativeInterface.GetDefense(1);
+    	
+		mPlayerBHP.setText(String.format("HP(%d):",bHP));
+		mProgressBarPlayerBHP.setProgress(bHP);
+		
+		mPlayerBMP.setText(String.format("MP(%d):",(int)bMP));
+		mProgressBarPlayerBMP.setProgress((int)bMP);
+		
+		mPlayerBAttack.setText(String.format("攻击力(%d):",bAttack));
+		mProgressBarPlayerBAttack.setProgress(bAttack);
+		
+		mPlayerBDefense.setText(String.format("防御(%d):",(int)bDefense));
+		mProgressBarPlayerBDefense.setProgress((int)bDefense);
     }
 }
